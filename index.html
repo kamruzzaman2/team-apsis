@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEAM APSIS</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+      margin: 0;
+      position: relative;
+      min-height: 100vh;
+      background: url('background.avif') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    .header {
+      width: 100%;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6, #1e3a8a);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 0;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6);
+    }
+    .header img {
+      height: 100px;
+      margin-right: 20px;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    }
+    .header-content {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 3rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .header .subtitle {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      font-weight: normal;
+      margin-top: 10px;
+      letter-spacing: 0.1rem;
+    }
+    .player-card {
+      position: relative;
+      width: 300px;
+      height: 350px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #f0f4f8;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .player-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .player-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s ease;
+    }
+    .player-card:hover .player-image {
+      filter: brightness(0.8);
+    }
+    .diagonal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(155deg, transparent 50%, #1e3a8a 50%);
+    }
+    .designation-badge {
+      position: absolute;
+      top: 170px;
+      right: 10px;
+      background-color: #e11d48;
+      color: #fff;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .text-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      color: #fff;
+      background-color: rgba(30, 58, 138, 0.9);
+      transition: transform 0.3s ease;
+    }
+    .player-card:hover .text-content {
+      transform: translateY(-5px);
+    }
+    .text-content .first-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 0.05rem;
+    }
+    .text-content .last-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 5px 0 0;
+      letter-spacing: 0.1rem;
+    }
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 0;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  transform: scale(0.7);
+  opacity: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  margin: 0; /* Remove margin */
+  top: 0; /* Remove top positioning */
+}
+
+    .modal.show .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .close {
+      color: #fff;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      z-index: 10;
+      transition: color 0.3s ease;
+    }
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .modal-image-container {
+      flex: 0 0 50%;
+      position: relative;
+      overflow: hidden;
+    }
+    .modal-image {
+      width: 100%;
+    /* max-height: 500px;*/
+      min-height: 400px;
+      object-fit: contain;
+    }
+    .modal-details-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: #fff;
+    }
+    .modal-name {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      padding: 8px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .modal-designation {
+      font-size: 1.2rem;
+      color: #f9a8d4;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .modal-details {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-weight: 300;
+      padding: 8px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 768px) {
+      .modal-content {
+        flex-direction: column;
+      }
+      .modal-image-container {
+        flex: 0 0 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <img src="logo.png" alt="Team Apsis Logo">
+    <div class="header-content">
+      <h1>Team Apsis</h1>
+      <p class="subtitle">For Inter Software Company Cricket Tournament - 2024-2025</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="playerModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-image-container">
+        <img id="modalImage" src="" alt="" class="modal-image">
+      </div>
+      <div class="modal-details-container">
+        <h2 id="modalName" class="modal-name"></h2>
+        <p id="modalDesignation" class="modal-designation"></p>
+        <div id="modalDetails" class="modal-details"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Cards -->
+  <script>
+    const teamData = [
+      { "name": "Rokib Hasnat", "image": "PID136412102.jpg", "designation": "CAPTAIN", "details": "Experienced all-rounder with strong leadership skills." },
+      { "name": "Kamruzzaman Rubel", "image": "PID136392102.jpg", "designation": "VICE CAPTAIN", "details": "Reliable batsman and excellent fielder." },
+      { "name": "Rezwanur Rahman", "image": "PID136262102.jpg", "designation": "", "details": "Promising young talent with good bowling skills." },
+      { "name": "Sajib Ahmed", "image": "PID136422102.jpg", "designation": "", "details": "Aggressive batsman known for quick scoring." },
+      { "name": "Ahsan Sharif", "image": "PID136272102.jpg", "designation": "", "details": "Versatile player with both batting and bowling abilities." },
+      { "name": "Masud Rana", "image": "PID136452102.jpg", "designation": "", "details": "Dependable middle-order batsman." },
+      { "name": "Shohail Rumel", "image": "PID176812102.jpg", "designation": "", "details": "Fast bowler with good pace and accuracy." },
+      { "name": "Hasan Toufiq", "image": "PID176372102.jpg", "designation": "", "details": "Spin bowler with a variety of deliveries." },
+      { "name": "Maksudul Nishat", "image": "PID176772102.jpg", "designation": "", "details": "Wicket-keeper with solid batting skills." },
+      { "name": "Sabbir Hosan", "image": "PID136442102.jpg", "designation": "", "details": "Hard-hitting batsman and part-time bowler." },
+      { "name": "Sohel Rana", "image": "PID136502102.jpg", "designation": "", "details": "Experienced player known for his fielding." },
+      { "name": "Saif Hossain Shovon", "image": "PID136462102.jpg", "designation": "", "details": "All-rounder with a knack for breaking partnerships." },
+      { "name": "Ashraful Islam", "image": "PID176442102.jpg", "designation": "", "details": "Young talent with potential in both batting and bowling." },
+      { "name": "Bulbul Ahmed", "image": "PID136472102.jpg", "designation": "", "details": "Reliable opening batsman with good technique." },
+      { "name": "AL Noman", "image": "PID176232102.jpg", "designation": "", "details": "Spin bowler with excellent control." },
+      { "name": "Mahmudul Talukder", "image": "PID176882102.jpg", "designation": "", "details": "Versatile player who can bat in any position." }
+    ];
+
+    const container = document.body;
+    const modal = document.getElementById("playerModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalName = document.getElementById("modalName");
+    const modalDesignation = document.getElementById("modalDesignation");
+    const modalDetails = document.getElementById("modalDetails");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    teamData.forEach(player => {
+      const [firstName, ...lastNameParts] = player.name.split(" ");
+      const lastName = lastNameParts.join(" ");
+      
+      const card = document.createElement("div");
+      card.className = "player-card";
+      
+      const image = document.createElement("img");
+      image.className = "player-image";
+      image.src = player.image;
+      image.alt = player.name;
+      card.appendChild(image);
+
+      const overlay = document.createElement("div");
+      overlay.className = "diagonal-overlay";
+      card.appendChild(overlay);
+
+      if (player.designation) {
+        const badge = document.createElement("div");
+        badge.className = "designation-badge";
+        badge.textContent = player.designation;
+        card.appendChild(badge);
+      }
+
+      const textContent = document.createElement("div");
+      textContent.className = "text-content";
+      
+      const firstNameEl = document.createElement("p");
+      firstNameEl.className = "first-name";
+      firstNameEl.textContent = firstName;
+      textContent.appendChild(firstNameEl);
+
+      const lastNameEl = document.createElement("h2");
+      lastNameEl.className = "last-name";
+      lastNameEl.textContent = lastName;
+      textContent.appendChild(lastNameEl);
+
+      card.appendChild(textContent);
+      container.appendChild(card);
+
+      card.addEventListener("click", () => {
+        modalImage.src = player.image;
+        modalImage.alt = player.name;
+        modalName.textContent = player.name;
+        modalDesignation.textContent = player.designation || "Team Member";
+        modalDetails.textContent = player.details;
+        modal.classList.add("show");
+      });
+    });
+
+    closeBtn.onclick = function() {
+      modal.classList.remove("show");
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.classList.remove("show");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -147,41 +147,41 @@
       letter-spacing: 0.1rem;
     }
     .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  justify-content: center;
-  align-items: center;
-}
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      justify-content: center;
+      align-items: center;
+    }
 
-.modal.show {
-  display: flex;
-  opacity: 1;
-}
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
 
-.modal-content {
-  background-color: #fff;
-  padding: 0;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 1000px;
-  display: flex;
-  transform: scale(0.7);
-  opacity: 0;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
-  margin: 0; /* Remove margin */
-  top: 0; /* Remove top positioning */
-}
+    .modal-content {
+      background-color: #fff;
+      padding: 0;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 1000px;
+      display: flex;
+      transform: scale(0.7);
+      opacity: 0;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      margin: 0; /* Remove margin */
+      top: 0; /* Remove top positioning */
+    }
 
     .modal.show .modal-content {
       transform: scale(1);
@@ -410,6 +410,7 @@
         <h2 id="modalName" class="modal-name"></h2>
         <p id="modalDesignation" class="modal-designation"></p>
         <div id="modalDetails" class="modal-details"></div>
+        <a id="modalProfile" href="" class="match-link" target="_blank">PROFILE</a>
       </div>
     </div>
   </div>
@@ -417,22 +418,22 @@
   <!-- Player Cards -->
   <script>
     const teamData = [
-      { "name": "Rokib Hasnat", "image": "PID136412102.jpg", "designation": "CAPTAIN", "details": "Experienced batting all-rounder with strong leadership skills." },
-      { "name": "Kamruzzaman Rubel", "image": "PID136392102.jpg", "designation": "VICE CAPTAIN", "details": "Reliable batting all-rounder and excellent fielder." },
-      { "name": "Rezwanur Rahman", "image": "PID136262102.jpg", "designation": "", "details": "Talented bowling all-rounder with solid skills." },
-      { "name": "Sajib Ahmed", "image": "PID136422102.jpg", "designation": "", "details": "Aggressive bowling all-rounder known for high intensity." },
-      { "name": "Ahsan Sharif", "image": "PID136272102.jpg", "designation": "", "details": "Classic batsman with consistent form." },
-      { "name": "Masud Rana", "image": "PID136452102.jpg", "designation": "", "details": "Reliable bowling all-rounder with a strong presence." },
-      { "name": "Shohail Rumel", "image": "PID176812102.jpg", "designation": "", "details": "Wicketkeeper-batsman with keen game sense." },
-      { "name": "Hasan Toufiq", "image": "PID176372102.jpg", "designation": "", "details": "Bowling all-rounder with varied spin options." },
-      { "name": "Maksudul Nishat", "image": "PID176772102.jpg", "designation": "", "details": "Skilled batting all-rounder with good versatility." },
-      { "name": "Sabbir Hosan", "image": "PID136442102.jpg", "designation": "", "details": "Powerful hard-hitting batsman and part-time bowler." },
-      { "name": "Sohel Rana", "image": "PID136502102.jpg", "designation": "", "details": "Hard-hitting batsman known for quick scoring." },
-      { "name": "Saif Hossain Shovon", "image": "PID136462102.jpg", "designation": "", "details": "Leg-spinner and batsman with tactical skill." },
-      { "name": "Ashraful Islam", "image": "PID176442102.jpg", "designation": "", "details": "Wicketkeeper-batsman with potential in batting." },
-      { "name": "Bulbul Ahmed", "image": "PID136472102.jpg", "designation": "", "details": "Reliable batsman with a sound technique." },
-      { "name": "AL Noman", "image": "PID176232102.jpg", "designation": "", "details": "Bowling all-rounder with excellent spin control." },
-      { "name": "Mahmudul Talukder", "image": "PID176882102.jpg", "designation": "", "details": "Bowling all-rounder adaptable in different positions." }
+      { "name": "Rokib Hasnat", "image": "PID136412102.jpg", "designation": "CAPTAIN", "details": "Experienced batting all-rounder with strong leadership skills." ,"profile": "https://isct20.com/#/playerprofile/13641" },
+      { "name": "Kamruzzaman Rubel", "image": "PID136392102.jpg", "designation": "VICE CAPTAIN", "details": "Reliable batting all-rounder and excellent fielder." ,"profile": "https://isct20.com/#/playerprofile/13639" },
+      { "name": "Rezwanur Rahman", "image": "PID136262102.jpg", "designation": "", "details": "Talented bowling all-rounder with solid skills." ,"profile": "https://isct20.com/#/playerprofile/13626" },
+      { "name": "Sajib Ahmed", "image": "PID136422102.jpg", "designation": "", "details": "Aggressive bowling all-rounder known for high intensity." ,"profile": "https://isct20.com/#/playerprofile/13642" },
+      { "name": "Ahsan Sharif", "image": "PID136272102.jpg", "designation": "", "details": "Classic batsman with consistent form." ,"profile": "https://isct20.com/#/playerprofile/13627" },
+      { "name": "Masud Rana", "image": "PID136452102.jpg", "designation": "", "details": "Reliable bowling all-rounder with a strong presence." ,"profile": "https://isct20.com/#/playerprofile/13645" },
+      { "name": "Shohail Rumel", "image": "PID176812102.jpg", "designation": "", "details": "Wicketkeeper-batsman with keen game sense." ,"profile": "https://isct20.com/#/playerprofile/17681" },
+      { "name": "Hasan Toufiq", "image": "PID176372102.jpg", "designation": "", "details": "Bowling all-rounder with varied spin options." ,"profile": "https://isct20.com/#/playerprofile/17637" },
+      { "name": "Maksudul Nishat", "image": "PID176772102.jpg", "designation": "", "details": "Skilled batting all-rounder with good versatility." ,"profile": "https://isct20.com/#/playerprofile/17677" },
+      { "name": "Sabbir Hosan", "image": "PID136442102.jpg", "designation": "", "details": "Powerful hard-hitting batsman and part-time bowler." ,"profile": "https://isct20.com/#/playerprofile/13644" },
+      { "name": "Sohel Rana", "image": "PID136502102.jpg", "designation": "", "details": "Hard-hitting batsman known for quick scoring." ,"profile": "https://isct20.com/#/playerprofile/13650" },
+      { "name": "Saif Hossain Shovon", "image": "PID136462102.jpg", "designation": "", "details": "Leg-spinner and batsman with tactical skill." ,"profile": "https://isct20.com/#/playerprofile/13646" },
+      { "name": "Ashraful Islam", "image": "PID176442102.jpg", "designation": "", "details": "Wicketkeeper-batsman with potential in batting." ,"profile": "https://isct20.com/#/playerprofile/17644" },
+      { "name": "Bulbul Ahmed", "image": "PID136472102.jpg", "designation": "", "details": "Reliable batsman with a sound technique." ,"profile": "https://isct20.com/#/playerprofile/13647" },
+      { "name": "AL Noman", "image": "PID176232102.jpg", "designation": "", "details": "Bowling all-rounder with excellent spin control." ,"profile": "https://isct20.com/#/playerprofile/17623" },
+      { "name": "Mahmudul Talukder", "image": "PID176882102.jpg", "designation": "", "details": "Bowling all-rounder adaptable in different positions." ,"profile": "https://isct20.com/#/playerprofile/17688" }
     ];
 
     const container = document.body;
@@ -441,6 +442,7 @@
     const modalName = document.getElementById("modalName");
     const modalDesignation = document.getElementById("modalDesignation");
     const modalDetails = document.getElementById("modalDetails");
+    const modalProfile = document.getElementById("modalProfile");
     const closeBtn = document.getElementsByClassName("close")[0];
 
     teamData.forEach(player => {
@@ -489,6 +491,7 @@
         modalName.textContent = player.name;
         modalDesignation.textContent = player.designation || "Team Member";
         modalDetails.textContent = player.details;
+        modalProfile.href = player.profile;
         modal.classList.add("show");
       });
     });

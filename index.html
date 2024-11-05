@@ -253,6 +253,43 @@
       border-radius: 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+    .match-schedule {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1400px;
+      margin-bottom: 50px;
+    }
+    .match-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .match-card:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+    .match-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .match-venue {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+    .match-link {
+      font-size: 1rem;
+      color: #3b82f6;
+      text-decoration: none;
+      margin-top: 10px;
+      display: inline-block;
+    }
     @media (max-width: 768px) {
       .modal-content {
         flex-direction: column;
@@ -273,6 +310,22 @@
     </div>
   </div>
 
+  <div class="match-schedule">
+    <div class="match-card">
+      <p class="match-venue"> Apsis Solutions Ltd.<br/>VS<br/>BRAC IT Services Ltd.</p>
+      <a href="https://maps.app.goo.gl/vLS8ze1pcD1Niwie8" class="match-link" target="_blank">Venue: Purbachal Sector 13 Ground 2 (🕓12:15 PM)</a>
+    </div>
+    <div class="match-card">
+      <p class="match-venue"> Apsis Solutions Ltd.<br/>VS<br/>SELISE Bangladesh</p>
+      <a href="https://goo.gl/maps/EWecX3UUBS22" class="match-link" target="_blank">Venue: Bhawal Ground (🕓12:15 PM)</a>
+    </div>
+    <div class="match-card">
+      <p class="match-venue"> Apsis Solutions Ltd.<br/>VS<br/>Dynamic Solution Innovators (DSI)</p>
+      <a href="https://goo.gl/maps/EWecX3UUBS22" class="match-link" target="_blank">Venue: Bhawal Ground (🕓12:15 PM)</a>
+    </div>
+    <!-- Add more match cards as needed -->
+  </div>
+
   <!-- Modal -->
   <div id="playerModal" class="modal">
     <div class="modal-content">
@@ -291,22 +344,22 @@
   <!-- Player Cards -->
   <script>
     const teamData = [
-      { "name": "Rokib Hasnat", "image": "PID136412102.jpg", "designation": "CAPTAIN", "details": "Experienced all-rounder with strong leadership skills." },
-      { "name": "Kamruzzaman Rubel", "image": "PID136392102.jpg", "designation": "VICE CAPTAIN", "details": "Reliable batsman and excellent fielder." },
-      { "name": "Rezwanur Rahman", "image": "PID136262102.jpg", "designation": "", "details": "Promising young talent with good bowling skills." },
-      { "name": "Sajib Ahmed", "image": "PID136422102.jpg", "designation": "", "details": "Aggressive batsman known for quick scoring." },
-      { "name": "Ahsan Sharif", "image": "PID136272102.jpg", "designation": "", "details": "Versatile player with both batting and bowling abilities." },
-      { "name": "Masud Rana", "image": "PID136452102.jpg", "designation": "", "details": "Dependable middle-order batsman." },
-      { "name": "Shohail Rumel", "image": "PID176812102.jpg", "designation": "", "details": "Fast bowler with good pace and accuracy." },
-      { "name": "Hasan Toufiq", "image": "PID176372102.jpg", "designation": "", "details": "Spin bowler with a variety of deliveries." },
-      { "name": "Maksudul Nishat", "image": "PID176772102.jpg", "designation": "", "details": "Wicket-keeper with solid batting skills." },
-      { "name": "Sabbir Hosan", "image": "PID136442102.jpg", "designation": "", "details": "Hard-hitting batsman and part-time bowler." },
-      { "name": "Sohel Rana", "image": "PID136502102.jpg", "designation": "", "details": "Experienced player known for his fielding." },
-      { "name": "Saif Hossain Shovon", "image": "PID136462102.jpg", "designation": "", "details": "All-rounder with a knack for breaking partnerships." },
-      { "name": "Ashraful Islam", "image": "PID176442102.jpg", "designation": "", "details": "Young talent with potential in both batting and bowling." },
-      { "name": "Bulbul Ahmed", "image": "PID136472102.jpg", "designation": "", "details": "Reliable opening batsman with good technique." },
-      { "name": "AL Noman", "image": "PID176232102.jpg", "designation": "", "details": "Spin bowler with excellent control." },
-      { "name": "Mahmudul Talukder", "image": "PID176882102.jpg", "designation": "", "details": "Versatile player who can bat in any position." }
+      { "name": "Rokib Hasnat", "image": "PID136412102.jpg", "designation": "CAPTAIN", "details": "Experienced batting all-rounder with strong leadership skills." },
+      { "name": "Kamruzzaman Rubel", "image": "PID136392102.jpg", "designation": "VICE CAPTAIN", "details": "Reliable batting all-rounder and excellent fielder." },
+      { "name": "Rezwanur Rahman", "image": "PID136262102.jpg", "designation": "", "details": "Talented bowling all-rounder with solid skills." },
+      { "name": "Sajib Ahmed", "image": "PID136422102.jpg", "designation": "", "details": "Aggressive bowling all-rounder known for high intensity." },
+      { "name": "Ahsan Sharif", "image": "PID136272102.jpg", "designation": "", "details": "Classic batsman with consistent form." },
+      { "name": "Masud Rana", "image": "PID136452102.jpg", "designation": "", "details": "Reliable bowling all-rounder with a strong presence." },
+      { "name": "Shohail Rumel", "image": "PID176812102.jpg", "designation": "", "details": "Wicketkeeper-batsman with keen game sense." },
+      { "name": "Hasan Toufiq", "image": "PID176372102.jpg", "designation": "", "details": "Bowling all-rounder with varied spin options." },
+      { "name": "Maksudul Nishat", "image": "PID176772102.jpg", "designation": "", "details": "Skilled batting all-rounder with good versatility." },
+      { "name": "Sabbir Hosan", "image": "PID136442102.jpg", "designation": "", "details": "Powerful hard-hitting batsman and part-time bowler." },
+      { "name": "Sohel Rana", "image": "PID136502102.jpg", "designation": "", "details": "Hard-hitting batsman known for quick scoring." },
+      { "name": "Saif Hossain Shovon", "image": "PID136462102.jpg", "designation": "", "details": "Leg-spinner and batsman with tactical skill." },
+      { "name": "Ashraful Islam", "image": "PID176442102.jpg", "designation": "", "details": "Wicketkeeper-batsman with potential in batting." },
+      { "name": "Bulbul Ahmed", "image": "PID136472102.jpg", "designation": "", "details": "Reliable batsman with a sound technique." },
+      { "name": "AL Noman", "image": "PID176232102.jpg", "designation": "", "details": "Bowling all-rounder with excellent spin control." },
+      { "name": "Mahmudul Talukder", "image": "PID176882102.jpg", "designation": "", "details": "Bowling all-rounder adaptable in different positions." }
     ];
 
     const container = document.body;

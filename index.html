@@ -255,41 +255,92 @@
     }
     .match-schedule {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       width: 100%;
       max-width: 1400px;
       margin-bottom: 50px;
     }
+
     .match-card {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       padding: 20px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
+
     .match-card:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(31, 38, 135, 0.5);
     }
-    .match-logo {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
+
     .match-venue {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      position: relative;
+      color: #ffffff;
+    }
+
+    .match-venue .versus {
+      color: #f59e0b;
+      font-size: 2rem;
       font-weight: bold;
-      color: #1e3a8a;
+      margin: -20px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
+
+    .match-venue span {
+      display: block;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
     .match-link {
-      font-size: 1rem;
-      color: #3b82f6;
-      text-decoration: none;
-      margin-top: 10px;
       display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: rgba(245, 158, 11, 0.8);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
+    .match-link:hover {
+      background-color: rgba(239, 68, 68, 0.8);
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .time {
+      font-size: 1rem;
+      color: #ffffff;
+      background-color: rgba(30, 58, 138, 0.8);
+      padding: 8px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 15px auto 0;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .time:hover {
+      background-color: rgba(59, 130, 246, 0.8);
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
     @media (max-width: 768px) {
       .modal-content {
         flex-direction: column;
@@ -312,18 +363,40 @@
 
   <div class="match-schedule">
     <div class="match-card">
-      <p class="match-venue"> Apsis Solutions Ltd.<br/>VS<br/>BRAC IT Services Ltd.</p>
-      <a href="https://maps.app.goo.gl/vLS8ze1pcD1Niwie8" class="match-link" target="_blank">Venue: Purbachal Sector 13 Ground 2 (🕓08-11-2024 12:15 PM)</a>
+      <div class="match-venue">
+        <span>Apsis Solutions Ltd.</span>
+        <span class="versus">VS</span>
+        <span>BRAC IT Services Ltd.</span>
+      </div>
+      <a href="https://maps.app.goo.gl/vLS8ze1pcD1Niwie8" class="match-link" target="_blank">
+        Venue: Purbachal Sector 13 Ground 2
+      </a>
+      <p class="time">🕓08-11-2024 12:15 PM</p>
     </div>
+
     <div class="match-card">
-      <p class="match-venue"> Apsis Solutions Ltd.<br/>VS<br/>SELISE Bangladesh</p>
-      <a href="https://goo.gl/maps/EWecX3UUBS22" class="match-link" target="_blank">Venue: Bhawal Ground (🕓22-11-2024 12:15 PM)</a>
+      <div class="match-venue">
+        <span>Apsis Solutions Ltd.</span>
+        <span class="versus">VS</span>
+        <span>SELISE Bangladesh</span>
+      </div>
+      <a href="https://goo.gl/maps/EWecX3UUBS22" class="match-link" target="_blank">
+        Venue: Bhawal Ground
+      </a>
+      <p class="time">🕓22-11-2024 12:15 PM</p>
     </div>
+
     <div class="match-card">
-      <p class="match-venue"> Apsis Solutions Ltd.<br/>VS<br/>Dynamic Solution Innovators (DSI)</p>
-      <a href="https://goo.gl/maps/EWecX3UUBS22" class="match-link" target="_blank">Venue: Bhawal Ground (🕓30-11-2024 12:15 PM)</a>
+      <div class="match-venue">
+        <span>Apsis Solutions Ltd.</span>
+        <span class="versus">VS</span>
+        <span>Dynamic Solution Innovators (DSI)</span>
+      </div>
+      <a href="https://goo.gl/maps/EWecX3UUBS22" class="match-link" target="_blank">
+        Venue: Bhawal Ground
+      </a>
+      <p class="time">🕓30-11-2024 12:15 PM</p>
     </div>
-    <!-- Add more match cards as needed -->
   </div>
 
   <!-- Modal -->

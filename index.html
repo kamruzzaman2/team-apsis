@@ -45,6 +45,7 @@
       position: relative;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       margin-bottom: 30px;
+      flex-wrap: wrap;
     }
     .header::before {
       content: '';
@@ -188,19 +189,24 @@
       opacity: 1;
     }
     .close {
-      color: #fff;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      position: absolute;
-      top: 15px;
-      right: 25px;
-      z-index: 10;
-      transition: color 0.3s ease;
+        color: #fff;
+        background-color: #333; /* Dark background to make it visible */
+        border-radius: 50%; /* Makes the background circular */
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        z-index: 10;
+        padding: 8px; /* Adds padding inside the circle */
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
+
     .close:hover,
     .close:focus {
-      color: #bbb;
+      background-color: #555;
+      color: #ddd;
       text-decoration: none;
       cursor: pointer;
     }
@@ -342,6 +348,24 @@
     }
 
     @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .header img {
+        margin-right: 0;
+        margin-bottom: 15px;
+        height: 80px;
+      }
+      .header h1 {
+        font-size: 2rem;
+        letter-spacing: 1rem;
+      }
+      .header .subtitle {
+        font-size: 1rem;
+        letter-spacing: 0.05rem;
+      }
+
       .modal-content {
         flex-direction: column;
       }
